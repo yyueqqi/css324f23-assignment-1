@@ -50,5 +50,16 @@ def h1(s):
 
 def h3(s):
     # implement this function
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
-    return 0
+    res = 0
+    for idx in range(1, 9):
+        if board[idx] != 0: 
+            current_tile = board[idx]
+            current_row = (idx - 1) // 3 
+            current_col = (idx - 1) % 3  
+            goal_index = goal.index(current_tile)
+            goal_row = goal_index // 3 
+            goal_col = goal_index % 3 
+            res += abs(current_row - goal_row) + abs(current_col - goal_col)
+    return res
